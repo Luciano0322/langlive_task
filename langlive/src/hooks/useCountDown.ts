@@ -25,7 +25,7 @@ export function useCountdown({
   intervalMs = 1000,
   isIncrement = false,
   extraCallback
-}: CountdownOptions): [number, CountdownControllers] {
+}: CountdownOptions): [number, CountdownControllers, boolean] {
   const {
     count,
     increment,
@@ -67,5 +67,5 @@ export function useCountdown({
 
   useInterval(countdownCallback, isCountdownRunning ? intervalMs : null)
 
-  return [count, { startCountdown, stopCountdown, resetCountdown }]
+  return [count, { startCountdown, stopCountdown, resetCountdown }, isCountdownRunning]
 }
